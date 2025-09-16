@@ -1,0 +1,13 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+RUN pip install pyngrok
+
+EXPOSE 5000
+
+CMD ["python", "run_with_ngrok.py"]
